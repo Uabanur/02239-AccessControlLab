@@ -1,0 +1,50 @@
+{
+    "roles": [
+        "manager",
+        "janitor",
+        "technician",
+        "power_user",
+        "user"
+    ],
+    "access_control_list": {
+        "manager": {
+            "inherits": [],
+            "specific": [
+                "print",
+                "queue",
+                "topQueue",
+                "start",
+                "stop",
+                "status",
+                "restart",
+                "readConfig",
+                "setConfig"
+            ]
+        },
+        "technician": {
+            "inherits": [],
+            "specific": [
+                "start",
+                "stop",
+                "restart",
+                "readConfig",
+                "setConfig",
+                "status"
+            ]
+        },
+        "power_user" : {
+            "inherits": ["user"],
+            "specific": [
+                "restart",
+                "topQueue"
+            ]
+        },
+        "user": {
+            "inherits": [],
+            "specific": [
+                "print",
+                "queue"
+            ]
+        }
+    }
+}

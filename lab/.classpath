@@ -1,0 +1,2 @@
+<classpathentry kind="lib" path="lib/sqlite-jdbc-3.36.0.3.jar"/>
+<classpathentry kind="lib" path="lib/json-20210307.jar"/>
