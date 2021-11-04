@@ -111,8 +111,10 @@ public class AccessControlService implements IAccessControlService {
         // statement.setString(1, username);
         // ResultSet result = statement.executeQuery();
 
-        var result = db.query("users").select(UserTableColumn.roles).whereEquals(UserTableColumn.username, username)
-                .execute();
+        var result = db.query("users")
+            .select(UserTableColumn.roles)
+            .whereEquals(UserTableColumn.username, username)
+            .execute();
 
         if (!result.next())
             return false;
