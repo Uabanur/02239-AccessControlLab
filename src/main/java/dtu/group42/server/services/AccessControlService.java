@@ -14,11 +14,11 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dtu.group42.server.InvalidAccessPolicyException;
-import dtu.group42.server.JsonHelper;
-import dtu.group42.server.Operation;
 import dtu.group42.server.db.IDatabase;
 import dtu.group42.server.db.UserTableColumn;
+import dtu.group42.server.exceptions.InvalidAccessPolicyException;
+import dtu.group42.server.helpers.JsonHelper;
+import dtu.group42.server.models.Operation;
 
 @Service
 public class AccessControlService implements IAccessControlService {

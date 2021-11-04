@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.UUID;
 
-import dtu.group42.server.IRemoteService;
+import dtu.group42.server.services.IRemoteService;
 
 public interface ISessionProvider extends IRemoteService {
     /**

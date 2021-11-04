@@ -1,4 +1,4 @@
-package dtu.group42.server;
+package dtu.group42.server.models;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

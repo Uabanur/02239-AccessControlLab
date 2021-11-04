@@ -1,4 +1,4 @@
-package dtu.group42.server;
+package dtu.group42.server.services;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -14,6 +14,7 @@ import dtu.group42.server.db.UserTableColumn;
 @Service
 public class UserAuthenticator implements IUserAuthenticator{
     @Autowired private IDatabase db;
+    @Autowired private IHashingService hashingService;
 
     @PostConstruct
     public void init() throws SQLException{
@@ -34,6 +35,7 @@ public class UserAuthenticator implements IUserAuthenticator{
         byte[] dbEncryptedPassword = result.getBytes("password");
 
         //compare encrypted provided password with stored encrypted password from enrollment
-        return Arrays.equals(PasswordHash.hashPassword(password.toCharArray(), salt), dbEncryptedPassword);
+        var computedHash = hashingService.hashPassword(password.toCharArray(), salt);
+        return Arrays.equals(computedHash, dbEncryptedPassword);
     }
 }

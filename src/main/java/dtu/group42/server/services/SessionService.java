@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Service;
 
-import dtu.group42.server.SessionToken;
+import dtu.group42.server.models.SessionToken;
 
 import java.time.LocalDateTime;
 

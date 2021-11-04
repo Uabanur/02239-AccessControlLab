@@ -1,4 +1,4 @@
-package dtu.group42.server;
+package dtu.group42.server.helpers;
 
 import java.io.File;
 import java.io.FileNotFoundException;

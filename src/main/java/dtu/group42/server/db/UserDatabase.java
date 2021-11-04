@@ -6,12 +6,15 @@ import java.util.Random;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dtu.group42.server.PasswordHash;
+import dtu.group42.server.services.IHashingService;
 
 @Service
 public class UserDatabase implements IDatabase {
+    @Autowired IHashingService hashingService;
+
     private boolean initialied = false;
     private Connection _connection;
     private Random RANDOM = new SecureRandom();
@@ -61,7 +64,7 @@ public class UserDatabase implements IDatabase {
             stm.setString(1, username);
             byte[] salt = new byte[512];
             RANDOM.nextBytes(salt);
-            stm.setBytes(2, PasswordHash.hashPassword(password.toCharArray(), salt));
+            stm.setBytes(2, hashingService.hashPassword(password.toCharArray(), salt));
             stm.setBytes(3, salt);
             stm.setString(4, roles);
             stm.executeUpdate();

@@ -1,4 +1,4 @@
-package dtu.group42.server;
+package dtu.group42.server.services;
 
 import java.sql.SQLException;
 

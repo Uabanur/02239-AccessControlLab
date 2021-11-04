@@ -1,4 +1,4 @@
-package dtu.group42.server;
+package dtu.group42.server.services;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -8,7 +8,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dtu.group42.server.services.ISecurityManager;
+import dtu.group42.server.models.Operation;
 import dtu.group42.shared.AccessFailedException;
 import dtu.group42.shared.AuthenticationFailedException;
 import dtu.group42.shared.IPrinter;
