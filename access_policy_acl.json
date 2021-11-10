@@ -1,14 +1,7 @@
 {
-    "roles": [
-        "manager",
-        "janitor",
-        "technician",
-        "power_user",
-        "user"
-    ],
+    "type" : "acl",
     "access_control_list": {
-        "manager": {
-            "inherits": [],
+        "alice": {
             "specific": [
                 "print",
                 "queue",
@@ -21,8 +14,7 @@
                 "setConfig"
             ]
         },
-        "technician": {
-            "inherits": [],
+        "bob": {
             "specific": [
                 "start",
                 "stop",
@@ -32,15 +24,33 @@
                 "status"
             ]
         },
-        "power_user" : {
-            "inherits": ["user"],
+        "cecilia" : {
             "specific": [
+                "print",
+                "queue",
                 "restart",
                 "topQueue"
             ]
         },
-        "user": {
-            "inherits": [],
+        "david": {
+            "specific": [
+                "print",
+                "queue"
+            ]
+        },
+        "erica": {
+            "specific": [
+                "print",
+                "queue"
+            ]
+        },
+        "fred": {
+            "specific": [
+                "print",
+                "queue"
+            ]
+        },
+        "george": {
             "specific": [
                 "print",
                 "queue"

@@ -12,7 +12,7 @@ import java.security.spec.InvalidKeySpecException;
 
 @Service
 public class HashingService implements IHashingService {
-    private static final int ITERATION_NR = 100_000;
+    private static final int ITERATION_NR = 1000;
     private static final int KEY_LENGTH = 512;
 
     // public static void main(String[] args) {
