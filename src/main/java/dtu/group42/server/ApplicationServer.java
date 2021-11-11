@@ -11,13 +11,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.Environment;
 
 import dtu.group42.server.exceptions.InvalidAccessPolicyException;
 import dtu.group42.server.services.IRemoteService;
-import dtu.group42.server.services.Printer;
-import dtu.group42.server.services.SessionProvider;
 import dtu.group42.server.services.SessionService;
-import dtu.group42.shared.*;
+import dtu.group42.server.startup.DiTypes;
 
 public class ApplicationServer {
     public static void main(String[] args)
@@ -35,7 +34,7 @@ public class ApplicationServer {
         // "filip_pass"));
         // System.out.println();
 
-        try (var ctx = new AnnotationConfigApplicationContext(DiServices.getServiceTypes())) {
+        try (var ctx = new AnnotationConfigApplicationContext(DiTypes.getAllTypes())){
             configureServices(ctx);
             configureBatchJobs(ctx);
         }
@@ -49,11 +48,14 @@ public class ApplicationServer {
 
     private static void configureServices(AnnotationConfigApplicationContext ctx)
             throws SQLException, AccessException, BeansException, RemoteException {
-        System.out.println("Creating registry for port: " + Config.SERVER_PORT);
-        Registry registry = LocateRegistry.createRegistry(Config.SERVER_PORT);
+        var env = ctx.getBean(Environment.class);
+        var serverPort = Integer.parseInt(env.getProperty("server.port"));
+        System.out.println("Creating registry for port: " + serverPort);
+        Registry registry = LocateRegistry.createRegistry(serverPort);
 
-        BindService(registry, ctx.getBean(SessionProvider.class));
-        BindService(registry, ctx.getBean(Printer.class));
+        var remoteServices = ctx.getBeansOfType(IRemoteService.class);
+        for (var service : remoteServices.values())
+            BindService(registry, service);
     }
 
     private static <T extends IRemoteService> void BindService(Registry registry, T service)

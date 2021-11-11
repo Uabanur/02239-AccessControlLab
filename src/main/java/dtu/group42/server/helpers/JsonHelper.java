@@ -13,7 +13,7 @@ public class JsonHelper {
         var file = new File(filename);
         System.out.println(file.getAbsolutePath());
 
-        var scanner = new Scanner(new File(filename));
+        var scanner = new Scanner(file);
         var sb = new StringBuilder();
         while (scanner.hasNext())
             sb.append(scanner.nextLine());
