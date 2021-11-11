@@ -34,7 +34,7 @@ public class ApplicationServer {
         // "filip_pass"));
         // System.out.println();
 
-        try (var ctx = new AnnotationConfigApplicationContext(DiTypes.getAllTypes())){
+        try (var ctx = new AnnotationConfigApplicationContext(DiTypes.getTypes())){
             configureServices(ctx);
             configureBatchJobs(ctx);
         }

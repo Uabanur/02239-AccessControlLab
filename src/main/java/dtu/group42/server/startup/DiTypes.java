@@ -14,40 +14,19 @@ import dtu.group42.server.services.SessionService;
 import dtu.group42.server.services.UserAuthenticator;
 
 public class DiTypes {
-    public static Class<?>[] getAllTypes(){
-        var types = new Class<?>[][]{
-            getPreWiring(),
-            getConditions(),
-            getConfigurations(),
-            getServiceTypes(),
-        };
-
-        Stream<Class<?>> result = Stream.empty();
-        for (var typeArray : types) {
-            result = Stream.concat(result, Arrays.stream(typeArray));
-        }
-        return result.toArray(Class<?>[]::new);
-    }
-
-    public static Class<?>[] getPreWiring(){
+    public static Class<?>[] getTypes(){
         return new Class<?>[]{
-            AppProperties.class,
-        };
-    }
+            // app configurations
+            AppConfig.class,
 
-    public static Class<?>[] getConfigurations(){
-        return new Class<?>[]{
+            // di configurations
             DiConfiguration.class,
-        };
-    } 
-    public static Class<?>[] getConditions(){
-        return new Class<?>[]{
+
+            // di conditions
             RBACCondition.class,
             ACLCondition.class,
-        };
-    } 
-    public static Class<?>[] getServiceTypes(){
-        return new Class<?>[]{
+
+            // services
             HashingService.class,
             UserDatabase.class,
             SessionService.class,
