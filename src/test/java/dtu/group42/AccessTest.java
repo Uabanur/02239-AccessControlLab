@@ -17,7 +17,7 @@ import dtu.group42.server.services.SessionProvider;
 import dtu.group42.server.startup.DiTypes;
 import dtu.group42.shared.AccessFailedException;
 
-public class AcccessTest 
+public class AccessTest 
 {
     private static Printer printer;
     private static SessionProvider sessionProvider;
