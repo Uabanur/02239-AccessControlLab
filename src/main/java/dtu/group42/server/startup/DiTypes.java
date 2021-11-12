@@ -1,8 +1,5 @@
 package dtu.group42.server.startup;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
 import dtu.group42.server.db.UserDatabase;
 import dtu.group42.server.services.ACLService;
 import dtu.group42.server.services.HashingService;
