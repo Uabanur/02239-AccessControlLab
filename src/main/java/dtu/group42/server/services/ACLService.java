@@ -8,18 +8,14 @@ import org.springframework.stereotype.Service;
 
 import dtu.group42.server.exceptions.InvalidAccessPolicyException;
 import dtu.group42.server.exceptions.InvalidAccessPolicyType;
+import dtu.group42.server.helpers.ArrayHelper;
 import dtu.group42.server.helpers.JsonHelper;
 import dtu.group42.server.models.Operation;
 
 @Service("ACService:acl")
 public class ACLService extends AccessControlService{
-    public void init() 
-            throws FileNotFoundException, InvalidAccessPolicyException, InvalidAccessPolicyType {
-        if(super.initialized) return;
-        loadPolicy();
-    }
-
-    private void loadPolicy() throws InvalidAccessPolicyException, FileNotFoundException, InvalidAccessPolicyType {
+    @Override
+    protected void loadPolicy() throws InvalidAccessPolicyException, FileNotFoundException, InvalidAccessPolicyType {
         var policy = loadPolicyFile();
         var userAccessRights = policy.getJSONObject("access_control_list");
         validatePolicy(userAccessRights);
@@ -57,5 +53,11 @@ public class ACLService extends AccessControlService{
 
     public boolean verifyAccess(String user, Operation op) {
         return _permissions.containsKey(user) && _permissions.get(user).contains(op);
+    }
+
+    @Override
+    public String[] getAccessForUser(String username){
+        if(!_permissions.containsKey(username)) return new String[]{};
+        return ArrayHelper.map(_permissions.get(username), x -> x.toString()).toArray(String[]::new);
     }
 }

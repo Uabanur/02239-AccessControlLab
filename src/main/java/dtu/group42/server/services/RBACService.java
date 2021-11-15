@@ -16,13 +16,8 @@ import dtu.group42.server.models.Operation;
 
 @Service("ACService:rbac")
 public class RBACService extends AccessControlService {
-
-    public void init() throws FileNotFoundException, InvalidAccessPolicyException, InvalidAccessPolicyType {
-        if(super.initialized) return;
-        loadPolicy();
-    }
-
-    private void loadPolicy()
+    @Override
+    protected void loadPolicy()
             throws FileNotFoundException, InvalidAccessPolicyException, InvalidAccessPolicyType {
         var policy = loadPolicyFile();
 
@@ -101,5 +96,17 @@ public class RBACService extends AccessControlService {
         }
 
         return false;
+    }
+
+
+    @Override
+    public String[] getAccessForUser(String username) throws SQLException{
+        var user = db.query("users")
+            .select(UserTableColumn.roles)
+            .whereEquals(UserTableColumn.username, username)
+            .execute();
+
+        if(!user.next()) return new String[]{};
+        return user.getString(UserTableColumn.roles.toString()).split(",");
     }
 }

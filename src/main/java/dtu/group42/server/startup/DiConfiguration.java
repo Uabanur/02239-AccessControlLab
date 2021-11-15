@@ -1,6 +1,7 @@
 package dtu.group42.server.startup;
 
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +20,7 @@ public class DiConfiguration {
 
     @Bean
     public IAccessControlService ACService(@Value("${policy.type}") String policyType)
-            throws FileNotFoundException, InvalidAccessPolicyException, InvalidAccessPolicyType {
+            throws FileNotFoundException, InvalidAccessPolicyException, InvalidAccessPolicyType, SQLException {
         var service = (IAccessControlService) ctx.getBean("ACService:" + policyType);
         service.init();
         return service;

@@ -8,6 +8,6 @@ import dtu.group42.server.exceptions.InvalidAccessPolicyType;
 import dtu.group42.server.models.Operation;
 
 public interface IAccessControlService {
-    void init() throws FileNotFoundException, InvalidAccessPolicyException, InvalidAccessPolicyType;
+    void init() throws FileNotFoundException, InvalidAccessPolicyException, InvalidAccessPolicyType, SQLException;
     boolean verifyAccess(String username, Operation op) throws SQLException, InvalidAccessPolicyType;
 }
