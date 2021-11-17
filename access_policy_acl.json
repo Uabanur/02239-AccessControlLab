@@ -1,60 +1,43 @@
 {
-    "type" : "acl",
-    "access_control_list": {
-        "alice": {
-            "specific": [
-                "print",
-                "queue",
-                "topQueue",
-                "start",
-                "stop",
-                "status",
-                "restart",
-                "readConfig",
-                "setConfig"
-            ]
-        },
-        "bob": {
-            "specific": [
-                "start",
-                "stop",
-                "restart",
-                "readConfig",
-                "setConfig",
-                "status"
-            ]
-        },
-        "cecilia" : {
-            "specific": [
-                "print",
-                "queue",
-                "restart",
-                "topQueue"
-            ]
-        },
-        "david": {
-            "specific": [
-                "print",
-                "queue"
-            ]
-        },
-        "erica": {
-            "specific": [
-                "print",
-                "queue"
-            ]
-        },
-        "fred": {
-            "specific": [
-                "print",
-                "queue"
-            ]
-        },
-        "george": {
-            "specific": [
-                "print",
-                "queue"
-            ]
-        }
+  "type": "acl",
+  "access_control_list": {
+    "alice": {
+      "specific": [
+        "print",
+        "queue",
+        "topQueue",
+        "start",
+        "stop",
+        "status",
+        "restart",
+        "readConfig",
+        "setConfig"
+      ]
+    },
+    "bob": {
+      "specific": [
+        "start",
+        "stop",
+        "restart",
+        "readConfig",
+        "setConfig",
+        "status"
+      ]
+    },
+    "cecilia": {
+      "specific": ["print", "queue", "restart", "topQueue"]
+    },
+    "david": {
+      "specific": ["print", "queue"]
+    },
+    "erica": {
+      "specific": ["print", "queue"]
+    },
+    "fred": {
+      "specific": ["print", "queue"]
+    },
+    "george": {
+      "specific": ["print", "queue"]
     }
+  }
 }

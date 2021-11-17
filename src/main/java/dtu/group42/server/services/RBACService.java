@@ -22,7 +22,7 @@ public class RBACService extends AccessControlService {
         var policy = loadPolicyFile();
 
         var roles = JsonHelper.getStringList(policy, "roles");
-        var rolePermissions = policy.getJSONObject("access_control_list");
+        var rolePermissions = policy.getJSONObject("specifications");
         validatePolicy(roles, rolePermissions);
 
         for (var role : roles) {

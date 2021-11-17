@@ -28,7 +28,7 @@ public class UserDatabase implements IDatabase {
         if(initialied) return;
          _connection = createInMemoryDatabase();
          populateTestData(_connection);
-         printTestData(_connection);
+        // printTestData(_connection);
          initialied = true;
     }
     
@@ -43,17 +43,20 @@ public class UserDatabase implements IDatabase {
         PreparedStatement stm = con.prepareStatement(queryString);
 
         String[] users = new String[]{ 
-            "nicu/test123/user",
-            "alex/alex_pass/user",
-            "filip/filip_pass/user",
-            "roar/roar_pass/user",
+           // "nicu/test123/user",
+           // "alex/alex_pass/user",
+           // "filip/filip_pass/user",
+           // "roar/roar_pass/user",
             "alice/alice123/manager",
-            "bob/bob123/janitor,technician",
+           // "bob/bob123/janitor,technician",
             "cecilia/cecilia123/power_user",
             "david/david123/user",
             "erica/erica123/user",
             "fred/fred123/user",
             "george/george123/user",
+            "ida/ida123/power_user",
+            "henry/henry123/user",
+
         };
 
         for (String user : users) {
