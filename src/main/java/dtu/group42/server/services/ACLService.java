@@ -27,7 +27,7 @@ public class ACLService extends AccessControlService{
 
     private void validatePolicy(JSONObject userAccessRights) throws InvalidAccessPolicyException {
         for (String user : userAccessRights.keySet()) {
-            var accessRights = JsonHelper.getStringList(userAccessRights.getJSONObject(user), "specific");
+            var accessRights = JsonHelper.getStringList(userAccessRights, user);
             for (String operation : accessRights) {
                 try {
                     Operation.valueOf(operation);
@@ -43,7 +43,7 @@ public class ACLService extends AccessControlService{
         if (!userAccessRights.has(user))
             return;
 
-        var accessRights = JsonHelper.getStringList(userAccessRights.getJSONObject(user), "specific");
+        var accessRights = JsonHelper.getStringList(userAccessRights, user);
         for (var operation : accessRights) {
             userAccess.add(parseOperationName(operation));
         }
